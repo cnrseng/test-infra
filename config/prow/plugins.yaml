@@ -9,6 +9,7 @@ plugins:
   - heart
   - hold
   - label
+  - size
   - lgtm
   - trigger
   - verify-owners
