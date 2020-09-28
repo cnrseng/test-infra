@@ -1,3 +1,6 @@
+
+# Plugin configuration
+---
 plugins:
   cnrseng:
   - approve
