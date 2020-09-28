@@ -27,7 +27,7 @@ config_updater:
       config/prow/config.yaml:
         name: config
       config/prow/plugins.yaml:
-        name: plugin
+        name: plugins
 
 # Lower bounds in number of lines changed; XS is assumed to be zero
 size:
