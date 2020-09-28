@@ -1,5 +1,3 @@
-# prow plugins.yaml
----
 plugins:
   cnrseng:
   - approve
@@ -11,6 +9,7 @@ plugins:
   - heart
   - hold
   - label
+  - size
   - lgtm
   - trigger
   - verify-owners
