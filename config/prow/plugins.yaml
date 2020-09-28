@@ -29,7 +29,7 @@ config_updater:
       config/prow/plugins.yaml:
         name: plugin
 
-# Lower bounds in number of lines changed; XS is assumed to be zero.
+# Lower bounds in number of lines changed; XS is assumed to be zero
 size:
   s:   10
   m:   30
