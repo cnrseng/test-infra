@@ -59,6 +59,8 @@ tide:
     - cnrseng
 
 decorate_all_jobs: true
+
+# Periodic jobs
 periodics:
 - interval: 60m
   agent: kubernetes
