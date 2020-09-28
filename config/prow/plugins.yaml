@@ -1,5 +1,3 @@
-# prow plugins.yaml
----
 plugins:
   cnrseng:
   - approve
