@@ -58,6 +58,11 @@ tide:
     orgs:
     - cnrseng
 
+github_reporter:
+  job_types_to_report:
+  - presubmit
+  - postsubmit
+
 decorate_all_jobs: true
 
 # Periodic jobs
