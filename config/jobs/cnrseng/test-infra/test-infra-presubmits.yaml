@@ -1,5 +1,5 @@
 presubmits:
-  kubernetes/test-infra:
+  cnrseng/test-infra:
   - name: pull-test-infra-build-smoke
     agent: knative-build
     decorate: true
@@ -61,4 +61,3 @@ presubmits:
         - config/jobs
     annotations:
       testgrid-create-test-group: 'true'
-
