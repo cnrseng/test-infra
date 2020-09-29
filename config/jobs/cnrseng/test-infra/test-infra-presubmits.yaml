@@ -39,7 +39,7 @@ presubmits:
       containers:
       - image: gcr.io/k8s-testimages/kubekins-e2e:v20190813-5765933-experimental
         command:
-        - ./hack/verify-file-perms.sh
+        - ./tools/verify-file-perms.sh
   - name: pull-test-infra-yamllint
     always_run: true
     decorate: true
@@ -51,4 +51,3 @@ presubmits:
         - -c
         - config/jobs/.yamllint.conf
         - config/jobs
-
