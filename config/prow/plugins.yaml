@@ -33,7 +33,7 @@ config_updater:
       config/jobs/**/*.yaml:
         name: job-config
       config/prow/labels.yaml:
-        name: labels
+        name: label-config
 
 # Lower bounds in number of lines changed; XS is assumed to be zero
 size:
