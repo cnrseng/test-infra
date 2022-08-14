@@ -1,6 +1,8 @@
 prowjob_namespace: prow
 pod_namespace: test-pods
-
+in_repo_config:
+  enabled:
+    "*": true
 deck:
  spyglass:
    lenses:
@@ -40,10 +42,6 @@ plank:
         entrypoint: gcr.io/k8s-prow/entrypoint:v20220812-9414716697
         initupload: gcr.io/k8s-prow/initupload:v20220812-9414716697
         sidecar: gcr.io/k8s-prow/sidecar:v20220812-9414716697
-merge_method:
-  cnrseng/test-infra: squash
-  cnrseng/dummy-repo: squash
-  
 tide:
   queries:
   - labels:
@@ -55,16 +53,12 @@ tide:
     - do-not-merge/invalid-owners-file
     orgs:
     - cnrseng
-    
 decorate_all_jobs: true
-presubmits:
-  cnrseng/test-infra:
-  - name: test-presubmit
-    branches:
-    - master
-    decorate: true
-    always_run: true
-    spec:
-      containers:
-      - image: alpine
-        command: ["/bin/printenv"]
+periodics:
+- interval: 60m
+  agent: kubernetes
+  name: echo-test
+  spec:
+    containers:
+    - image: alpine
+      command: ["/bin/date"]
