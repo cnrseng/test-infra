@@ -57,7 +57,7 @@ tide:
     - cnrseng
 decorate_all_jobs: true
 periodics:
-- interval: 3600m
+- interval: 3601m
   agent: kubernetes
   name: echo-test
   spec:
