@@ -57,14 +57,3 @@ tide:
     - cnrseng
     
 decorate_all_jobs: true
-presubmits:
-  cnrseng/test-infra:
-  - name: test-presubmit
-    branches:
-    - master
-    decorate: true
-    always_run: true
-    spec:
-      containers:
-      - image: alpine
-        command: ["/bin/printenv"]
