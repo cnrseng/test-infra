@@ -61,6 +61,7 @@ tide:
     - cnrseng
     
 decorate_all_jobs: true
+# Health check every 1h
 periodics:
 - interval: 3601m
   agent: kubernetes
