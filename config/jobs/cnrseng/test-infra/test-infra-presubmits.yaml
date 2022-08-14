@@ -1,6 +1,14 @@
 presubmits:
   cnrseng/test-infra:
   
+  - name: test-presubmit
+    decorate: true
+    always_run: true
+    spec:
+      containers:
+      - image: alpine
+        command: ["/bin/printenv"]
+        
   - name: pull-test-infra-gubernator
     branches:
     - master
