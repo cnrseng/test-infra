@@ -2,8 +2,9 @@
 ---
 prowjob_namespace: prow
 pod_namespace: test-pods
-log_level: debug
-
+in_repo_config:
+  enabled:
+    "*": true
 deck:
  spyglass:
    lenses:
@@ -24,14 +25,13 @@ deck:
        name: podinfo
      required_files:
      - podinfo.json
-
 plank:
   job_url_prefix_config:
-    "*": https://prow.apps.4.5.11-ed-dev.perf-testing.devcluster.openshift.com/view/
+    "*": https://prow.ed-kops.psap.aws.rhperfscale.org/view/
   report_templates:
     '*': >-
-        [Full PR test history](https://prow.apps.4.5.11-ed-dev.perf-testing.devcluster.openshift.com/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}).
-        [Your PR dashboard](https://prow.apps.4.5.11-ed-dev.perf-testing.devcluster.openshift.com/pr?query=is:pr+state:open+author:{{with
+        [Full PR test history](https://prow.ed-kops.psap.aws.rhperfscale.org/pr-history?org={{.Spec.Refs.Org}}&repo={{.Spec.Refs.Repo}}&pr={{with index .Spec.Refs.Pulls 0}}{{.Number}}{{end}}).
+        [Your PR dashboard](https://prow.ed-kops.psap.aws.rhperfscale.org/pr?query=is:pr+state:open+author:{{with
         index .Spec.Refs.Pulls 0}}{{.Author}}{{end}}).
   default_decoration_configs:
     "*":
@@ -40,11 +40,10 @@ plank:
         path_strategy: explicit
       s3_credentials_secret: s3-credentials
       utility_images:
-        clonerefs: gcr.io/k8s-prow/clonerefs:v20200924-4bb1aa1ffa
-        entrypoint: gcr.io/k8s-prow/entrypoint:v20200924-4bb1aa1ffa
-        initupload: gcr.io/k8s-prow/initupload:v20200924-4bb1aa1ffa
-        sidecar: gcr.io/k8s-prow/sidecar:v20200924-4bb1aa1ffa
-
+        clonerefs: gcr.io/k8s-prow/clonerefs:v20220812-9414716697
+        entrypoint: gcr.io/k8s-prow/entrypoint:v20220812-9414716697
+        initupload: gcr.io/k8s-prow/initupload:v20220812-9414716697
+        sidecar: gcr.io/k8s-prow/sidecar:v20220812-9414716697
 tide:
   queries:
   - labels:
@@ -56,20 +55,12 @@ tide:
     - do-not-merge/work-in-progress
     - do-not-merge/invalid-owners-file
     orgs:
-    - cnrseng
-
-github_reporter:
-  job_types_to_report:
-  - presubmit
-  - postsubmit
-
+    - << your_github_org >>
 decorate_all_jobs: true
-
-# Periodic jobs
 periodics:
-- interval: 60m
+- interval: 1m
   agent: kubernetes
-  name: health-check
+  name: echo-test
   spec:
     containers:
     - image: alpine
