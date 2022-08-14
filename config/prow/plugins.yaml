@@ -1,40 +1,5 @@
 # Prow plugins
-plugins:
-  cnrseng:
-  - approve
-  - assign
-  - blunderbuss
-  - cat
-  - dog
-  - help
-  - heart
-  - hold
-  - label
-  - lifecycle
-  - size
-  - lgtm
-  - trigger
-  - verify-owners
-  - wip
-  - yuks
-  
-  cnrseng/test-infra:
-  - config-updater
-  - override
-  - project
-
-# Enable config-updater for cnrseng/test-infra
-config_updater:
-    maps:
-      config/prow/config.yaml:
-        name: config
-      config/prow/plugins.yaml:
-        name: plugins
-      config/jobs/**/*.yaml:
-        name: job-config
-      config/prow/labels.yaml:
-        name: label-config
-
+---
 # Lower bounds in number of lines changed; XS is assumed to be zero
 size:
   s:   10
@@ -43,9 +8,62 @@ size:
   xl:  500
   xxl: 1000
 
-# Additional labels for cnrseng
 label:
   additional_labels:
+    # These labels are used to make Tide merge with a non-default merge method
     - tide/merge-method-merge
     - tide/merge-method-rebase
     - tide/merge-method-squash
+
+config_updater:
+  maps:
+    config/prow/labels.yaml:
+      name: label-config
+      clusters:
+        test-infra-trusted:
+          - default
+    config/prow/config.yaml:
+      name: config
+      clusters:
+        test-infra-trusted:
+          - default
+    config/prow/plugins.yaml:
+      name: plugins
+      clusters:
+        test-infra-trusted:
+          - default
+    config/jobs/**/*.{yaml,yml}:
+      name: job-config
+      gzip: true
+      clusters:
+        test-infra-trusted:
+          - default
+welcome:
+- repos:
+  - test-infra
+
+plugins:
+  cnrseng:
+    plugins:
+    - approve
+    - assign
+    - blunderbuss
+    - cat
+    - dog
+    - help
+    - heart
+    - hold
+    - label
+    - lifecycle
+    - size
+    - lgtm
+    - trigger
+    - verify-owners
+    - wip
+    - yuks
+  
+  cnrseng/test-infra:
+    plugins:
+    - config-updater
+    - override
+    - project
