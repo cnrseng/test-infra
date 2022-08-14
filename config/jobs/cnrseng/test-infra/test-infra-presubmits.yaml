@@ -20,7 +20,6 @@ presubmits:
       testgrid-dashboards: presubmits-test-infra
       testgrid-tab-name: gubernator
 
-  # Please keep this in sync with the `ci-test-infra-prow-checkconfig` job
   - name: pull-test-infra-prow-checkconfig
     decorate: true
     run_if_changed: '^(config/prow/(config|plugins).yaml$|config/jobs/.*.yaml$)'
