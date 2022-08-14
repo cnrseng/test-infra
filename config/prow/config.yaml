@@ -1,8 +1,10 @@
 prowjob_namespace: prow
 pod_namespace: test-pods
+
 in_repo_config:
   enabled:
     "*": true
+
 deck:
  spyglass:
    lenses:
