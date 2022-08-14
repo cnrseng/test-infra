@@ -1,0 +1,9 @@
+# 1h check
+periodics:
+- interval: 3601m
+  agent: kubernetes
+  name: echo-test
+  spec:
+    containers:
+    - image: alpine
+      command: ["/bin/date"]
