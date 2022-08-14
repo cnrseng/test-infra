@@ -47,7 +47,6 @@ plank:
 tide:
   queries:
   - labels:
-    - lgtm
     - approved
     missingLabels:
     - needs-rebase
