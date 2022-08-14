@@ -1,6 +1,6 @@
 presubmits:
   cnrseng/test-infra:
-  - name: test-presubmit
+  - name: presubmit-dummy
     branches:
     - master
     decorate: true
