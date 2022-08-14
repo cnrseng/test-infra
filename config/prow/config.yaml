@@ -1,10 +1,10 @@
-# prow config.yaml
----
 prowjob_namespace: prow
 pod_namespace: test-pods
+
 in_repo_config:
   enabled:
     "*": true
+    
 deck:
  spyglass:
    lenses:
@@ -44,6 +44,10 @@ plank:
         entrypoint: gcr.io/k8s-prow/entrypoint:v20220812-9414716697
         initupload: gcr.io/k8s-prow/initupload:v20220812-9414716697
         sidecar: gcr.io/k8s-prow/sidecar:v20220812-9414716697
+merge_method:
+  cnrseng/test-infra: squash
+  cnrseng/dummy-repo: squash
+  
 tide:
   queries:
   - labels:
@@ -55,9 +59,10 @@ tide:
     - do-not-merge/invalid-owners-file
     orgs:
     - cnrseng
+    
 decorate_all_jobs: true
 periodics:
-- interval: 3600m
+- interval: 3601m
   agent: kubernetes
   name: echo-test
   spec:
