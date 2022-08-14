@@ -1,6 +1,8 @@
 presubmits:
   cnrseng/test-infra:
   - name: test-presubmit
+    branches:
+    - master
     decorate: true
     always_run: true
     spec:
